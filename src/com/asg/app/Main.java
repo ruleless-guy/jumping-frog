@@ -4,29 +4,23 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Frog frog = new Frog();
-		frog.jump(30);
-		System.out.println("Total jump : "+frog.totalJumps());
+		System.out.println("Total jump : "+frog.totalJumps(30, true));
+		System.out.println("Total jump : "+frog.totalJumps(30, false));
+		
 	}
 	
 }
 
 class Frog{
-	private int totalJumps;
 	private int jumpHeight = 3;
 	private int fall = 2;
 	
-	public void jump(int depthOfPit) {
-		totalJumps = 0;
-		int height = 0;
-		while(height < depthOfPit) {
-			++totalJumps;
-			height += jumpHeight - fall;
+	public int totalJumps(int depth , boolean inclusive) {
+		
+		if(!inclusive && ( (totalJumps(depth,true) - 2) * ( jumpHeight - fall ) ) == (depth - jumpHeight)) {
+			return totalJumps(depth,true) -1;
+		}else {
+			return ( (depth-jumpHeight) / (jumpHeight - fall) ) + 2;
 		}
 	}
-	
-	public int totalJumps() {
-		return totalJumps;
-	}
-	
-	
 }
