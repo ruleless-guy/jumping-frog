@@ -5,27 +5,27 @@ public class Main {
 	public static void main(String[] args) {
 		Frog frog = new Frog();
 		frog.jump(30);
-		System.out.println("Total jump : "+frog.totalJump());
+		System.out.println("Total jump : "+frog.totalJumps());
 	}
 	
 }
 
 class Frog{
-	private int totalJump;
+	private int totalJumps;
 	private int jumpHeight = 3;
 	private int fall = 2;
 	
 	public void jump(int depthOfPit) {
-		totalJump = 0;
+		totalJumps = 0;
 		int height = 0;
 		while(height < depthOfPit) {
-			++totalJump;
+			++totalJumps;
 			height += jumpHeight - fall;
 		}
 	}
 	
-	public int totalJump() {
-		return totalJump;
+	public int totalJumps() {
+		return totalJumps;
 	}
 	
 	
